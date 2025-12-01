@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+
+<div class="form-box">
+    <h2>Criar Conta</h2>
+    <form id="cadastroForm">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+        <label for="confirmar">Confirmar Senha</label>
+        <input type="password" id="confirmar" name="confirmar" placeholder="Repita sua senha" required>
+
+        <button type="submit">Cadastrar</button>
+
+        <br><br>
+
+        <button class="limpo" type="reset">Limpar</button>
+   
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    const form = document.getElementById('cadastroForm');
+    const emailInput = document.getElementById('email');
+    const senhaInput = document.getElementById('senha');
+    const confirmarInput = document.getElementById('confirmar');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // impede envio automático
+
+        const email = emailInput.value.trim();
+        const senha = senhaInput.value.trim();
+        const confirmar = confirmarInput.value.trim();
+
+        // Regex para validar e-mail
+        const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+
+        // Regex para senha: mínimo 8 caracteres, 1 maiúscula, 1 minúscula, 1 número
+        const senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+        // Validação de e-mail
+        if (!emailRegex.test(email)) {
+            alert('E-mail inválido! Digite no formato exemplo@email.com');
+            emailInput.focus();
+            return;
+        }
+
+        // Validação de senha
+        if (!senhaRegex.test(senha)) {
+            alert('Senha inválida! Ela deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, uma minúscula e um número.');
+            senhaInput.focus();
+            return;
+        }
+
+        // Confirmação de senha
+        if (senha !== confirmar) {
+            alert('As senhas não coincidem!');
+            confirmarInput.focus();
+            return;
+        }
+
+        // Cadastro válido
+        alert('Cadastro realizado com sucesso!');
+    ;
+
+        // seta o cookie por 365 dias
+    setCookie("usuarioCadastrado", "true", 30);
+
+        // então envia o form (ou redireciona)
+
+        form.submit();
+    });
+
+});
+</script>
+
+</body>
+
+<style>
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-box {
+        background: #fff;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 350px;
+    }
+
+    .form-box h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+        font-weight: bold;
+    }
+
+    input {
+        width: 90%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+
+    input:focus {
+        border-color: #007BFF;
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #007BFF;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    .limpo{
+        background-color: #333;
+        width: 50%;
+        margin-left: 25%;
+        padding: 8px;
+    }
+    .limpo:hover{
+        background-color: #1b1b1b;
+    }
+
+    .link-login {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .link-login a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+
+    .link-login a:hover {
+        text-decoration: underline;
+    }</style>   
+</html>

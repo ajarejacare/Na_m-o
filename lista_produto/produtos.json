@@ -1,0 +1,40 @@
+
+{
+"produtos": [
+    {
+        "id":1,
+        "nome": "Celular top",
+        "preco": "R$ 1200",
+        "descricao": "Celular muito bom.",
+        "imagem": "/img/celular (2).png"
+    },
+    {
+        "id":2,
+        "nome": "Geladeira boa",
+        "preco": "R$ 2500",
+        "descricao": "Geladeira gelando muito.",
+        "imagem": "/img/geladeira.png"
+    },
+    {
+        "id":3,
+        "nome": "Notebook bom demais",
+        "preco": "R$ 3400",
+        "descricao": "Perfeito para estudos.",
+        "imagem": "/img/notebook.png"
+    },
+    {
+        "id":4,
+        "nome": "PC gamer",
+        "preco": "R$ 5000",
+        "descricao": "Tudo o que precisa está nesse pc.",
+        "imagem": "/img/computador.png"
+    },
+    {
+        "id":5,
+        "nome":"televisão",
+        "preco": "R$ 1400",
+        "descricao":"Alta qualidade",
+        "imagem":"/img/TV.png"
+    }
+    ]
+}
